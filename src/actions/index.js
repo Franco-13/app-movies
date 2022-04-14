@@ -7,11 +7,29 @@ import {
 } from "./actionTypes";
 
 export function addMovieFavorite(payload) {
+  const moviesFavourites = JSON.parse(localStorage.getItem("moviesFav"));
+
+  const find = moviesFavourites.find((movie) => movie.id === payload.id);
+
+  if (!find) {
+    moviesFavourites.push(payload);
+  }
+
+  localStorage.setItem("moviesFav", JSON.stringify(moviesFavourites));
+
   return { type: ADD_MOVIE_FAVORITE, payload };
 }
 
-export function removeMovieFavorite(index) {
-  return { type: REMOVE_MOVIE_FAVORITE, payload: index };
+export function removeMovieFavorite(payload) {
+  const moviesFavourites = JSON.parse(localStorage.getItem("moviesFav"));
+  let index = moviesFavourites.findIndex((movie) => movie.id === payload.id);
+
+  if (index !== -1) {
+    moviesFavourites.splice(index, 1);
+  }
+
+  localStorage.setItem("moviesFav", JSON.stringify(moviesFavourites));
+  return { type: REMOVE_MOVIE_FAVORITE, payload };
 }
 
 export function getMoviesDetails(id) {

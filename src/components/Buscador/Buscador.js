@@ -63,7 +63,7 @@ export class Buscador extends Component {
         </form>
         <div className="containerList">
           <ul className="moviesList">
-            {this.props.busqueda &&
+            {this.props.busqueda?.length ? (
               this.props.busqueda?.map((el, i) => (
                 <div key={el.imdbID + i} className="movieListItem">
                   <li>
@@ -92,7 +92,24 @@ export class Buscador extends Component {
                     </Link>
                   </div>
                 </div>
-              ))}
+              ))
+            ) : (
+              <li
+                style={{
+                  listStyle: "none",
+                }}
+              >
+                <p
+                  style={{
+                    margin: "0px auto",
+                    fontSize: ".75rem",
+                    textAlign: "center",
+                  }}
+                >
+                  Realice una búsqueda
+                </p>
+              </li>
+            )}
           </ul>
         </div>
       </section>

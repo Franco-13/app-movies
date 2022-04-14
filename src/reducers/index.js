@@ -6,8 +6,12 @@ import {
   LOADING,
 } from "../actions/actionTypes";
 
+const moviesFav = localStorage.getItem("moviesFav")
+  ? JSON.parse(localStorage.getItem("moviesFav"))
+  : [];
+
 const initialState = {
-  moviesFavourites: [],
+  moviesFavourites: moviesFav,
   moviesLoaded: [],
   movieDetail: {},
   loading: false,
@@ -29,7 +33,7 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         moviesFavourites: state.moviesFavourites.filter(
-          (el, i) => i !== action.payload
+          (el) => el.id !== action.payload.id
         ),
       };
     case GET_MOVIES_DETAILS:

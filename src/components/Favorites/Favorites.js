@@ -21,7 +21,7 @@ export class ConnectedList extends Component {
                   <div className="btnContainer">
                     <button
                       className="btnAdd"
-                      onClick={() => this.props.removeMovieFavorite(i)}
+                      onClick={() => this.props.removeMovieFavorite(el)}
                     >
                       Quitar Pelicula
                     </button>
