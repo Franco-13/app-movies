@@ -74,7 +74,7 @@ export class Buscador extends Component {
                       (movie) => movie.id === el.imdbID
                     )?.length ? (
                       <button className="btnAdd btnDisabled" disabled>
-                        Agregar a Favoritas
+                        Agregada a Favoritas
                       </button>
                     ) : (
                       <button
