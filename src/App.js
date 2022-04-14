@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import Favorites from "./components/Favorites/Favorites";
 import Buscador from "./components/Buscador/Buscador";
@@ -7,6 +7,15 @@ import { Route } from "react-router-dom";
 import Movie from "./components/Movie/Movie";
 
 function App() {
+  useEffect(() => {
+    const moviesFav = localStorage.getItem("moviesFav")
+      ? JSON.parse(localStorage.getItem("moviesFav"))
+      : [];
+    if (!moviesFav.length) {
+      localStorage.setItem("moviesFav", JSON.stringify(moviesFav));
+    }
+  }, []);
+
   return (
     <div className="App">
       <NavBar />
